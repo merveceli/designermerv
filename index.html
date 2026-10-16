@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Hocalar için ihtiyaca göre tasarlanan web siteleri. İlk 10 hocaya kampanya fiyatı. Instagram: @designermerv_">
+<meta property="og:title" content="Hocalar İçin Web Sitesi · Merve Çelik">
+<meta property="og:description" content="Derslerinize, kitaplarınıza ve videolarınıza tek bir adres. İlk 10 hocaya kampanya.">
+<meta property="og:image" content="ornek-masaustu.png">
+<meta property="og:type" content="website">
+<style>
+:root{color-scheme:light; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0; font:14px system-ui,-apple-system,"Segoe UI",sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>Hocalar İçin Web Sitesi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Layout: kareli defter sayfası. Kırmızı kalem notları ve fosforlu kalem vurgularıyla tek kolon, hero'da örnek site çizimi. */
+:root{
+  --paper:#f5f7fb; --card:#ffffff; --ink:#18223d; --muted:#5b6582;
+  --grid:#e2e8f3; --line:#d3dbea; --pen:#c7372c; --marker:#ffe56b; --marker-ink:#18223d;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --hand:"Caveat", "Segoe Print", "Comic Sans MS", cursive;
+  /* örnek site çizimi her temada açık renkte kalır */
+  --m-bg:#ffffff; --m-ink:#1f2a44; --m-soft:#eef3fb; --m-accent:#2f6fde; --m-muted:#6b7590; --m-line:#dde4f0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111a2d; --card:#17223a; --ink:#e7ecf6; --muted:#9ba6c2;
+    --grid:#1b2640; --line:#2a3654; --pen:#ff6e5e; --marker:rgba(255,214,80,.32); --marker-ink:#fff6cf;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111a2d; --card:#17223a; --ink:#e7ecf6; --muted:#9ba6c2;
+  --grid:#1b2640; --line:#2a3654; --pen:#ff6e5e; --marker:rgba(255,214,80,.32); --marker-ink:#fff6cf;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:24px 24px;
+  color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.6;
+}
+.wrap{
+  max-width:1120px; margin:0 auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+h1,h2,h3{font-family:var(--display); line-height:1.08; text-wrap:balance; margin:0}
+h2{font-size:clamp(1.9rem, 4vw, 2.6rem); font-weight:800; letter-spacing:-.02em}
+h3{font-size:1.25rem; font-weight:700}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pen); outline-offset:3px; border-radius:6px}
+.hl{background:linear-gradient(transparent 52%, var(--marker) 52%, var(--marker) 92%, transparent 92%); color:inherit; padding:0 .1em}
+.hand{font-family:var(--hand); color:var(--pen); font-weight:700}
+.eyebrow{font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--pen)}
+
+/* üst bar */
+.top{padding-block:20px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap}
+.brand{font-family:var(--display); font-weight:800; font-size:1.15rem}
+.brand small{display:block; font-family:var(--body); font-weight:500; font-size:.82rem; color:var(--muted)}
+.btn{
+  display:inline-flex; align-items:center; gap:10px; text-decoration:none;
+  font-weight:700; font-size:1rem; padding:12px 20px; border-radius:999px;
+  background:var(--ink); color:var(--paper); border:2px solid var(--ink);
+  transition:transform .15s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent; color:var(--ink)}
+.btn svg{width:18px; height:18px; flex:none}
+
+/* hero */
+.hero{display:grid; grid-template-columns:1.05fr 1fr; gap:56px; align-items:center; padding-block:40px 72px}
+.hero-text{display:grid; gap:22px; min-width:0; position:relative}
+.hero h1{font-size:clamp(2.4rem, 5.6vw, 4.1rem); font-weight:800; letter-spacing:-.03em}
+.lead{font-size:1.15rem; color:var(--muted); max-width:34em}
+.lead strong{color:var(--ink)}
+.badge{
+  justify-self:start; display:inline-flex; align-items:center; gap:10px;
+  border:2px dashed var(--pen); color:var(--pen); border-radius:10px;
+  padding:6px 14px; font-weight:700; font-size:.95rem; background:var(--card);
+}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+
+/* örnek site çizimi */
+.mock-zone{position:relative; min-width:0}
+.note{position:absolute; top:-38px; right:8px; font-size:1.6rem; transform:rotate(-4deg); display:flex; align-items:center; gap:6px}
+.note svg{width:46px; height:34px}
+.shot{position:relative; padding:0 34px 56px 0}
+.browser{background:var(--m-bg); border-radius:14px; overflow:hidden; border:1px solid var(--line); box-shadow:0 24px 50px -24px rgba(18,28,56,.45)}
+.browser img{display:block; width:100%; height:auto}
+.phone{position:absolute; right:0; bottom:0; width:29%; aspect-ratio:9/18; max-width:100%; border-radius:24px; border:6px solid #141a2a; overflow:hidden; background:var(--m-bg); box-shadow:0 26px 40px -18px rgba(18,28,56,.55)}
+.phone img{display:block; width:100%; height:auto; animation:phone-scroll 18s cubic-bezier(.45,0,.25,1) infinite; will-change:transform}
+/* görsel 780×5767; çerçeve 1:2 olduğundan görünen kısım %27, en alta inmek için −%72.9 */
+@keyframes phone-scroll{
+  0%,8%{transform:translateY(0)}
+  16%,24%{transform:translateY(-16%)}
+  34%,42%{transform:translateY(-38%)}
+  52%,60%{transform:translateY(-56%)}
+  70%,80%{transform:translateY(-72.9%)}
+  92%,100%{transform:translateY(0)}
+}
+.rec{position:absolute; left:50%; top:10px; transform:translateX(-50%); z-index:2; display:flex; align-items:center; gap:5px; background:rgba(20,26,42,.82); color:#fff; font-size:10px; font-weight:700; letter-spacing:.06em; padding:3px 8px; border-radius:999px; white-space:nowrap}
+.rec::before{content:""; width:6px; height:6px; border-radius:50%; background:#ff4d3d; animation:rec-blink 1.4s steps(2) infinite}
+@keyframes rec-blink{50%{opacity:0}}
+.m-bar{display:flex; align-items:center; gap:6px; padding:10px 12px; background:var(--m-soft); border-bottom:1px solid var(--m-line)}
+.m-bar i{width:9px; height:9px; border-radius:50%; background:var(--m-line); display:block}
+.m-url{margin-left:8px; flex:1; min-width:0; background:var(--m-bg); border-radius:6px; padding:3px 10px; color:var(--m-muted); font-size:11.5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.m-nav{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:12px 16px; border-bottom:1px solid var(--m-line)}
+.m-logo{font-family:var(--display); font-weight:800; font-size:14px}
+.m-links{display:flex; gap:12px; color:var(--m-muted); font-size:11.5px}
+.m-hero{padding:18px 16px 14px; display:grid; gap:8px}
+.m-hero b{font-family:var(--display); font-size:20px; line-height:1.15}
+.m-chips{display:flex; gap:6px; flex-wrap:wrap}
+.m-chips span{background:var(--m-soft); color:var(--m-accent); font-weight:700; font-size:11px; padding:3px 9px; border-radius:999px}
+.m-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:10px; padding:0 16px 16px}
+.m-card{border:1px solid var(--m-line); border-radius:10px; padding:10px; display:grid; gap:6px; min-width:0}
+.m-card small{color:var(--m-muted); font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase}
+.m-opts{display:grid; grid-template-columns:1fr 1fr; gap:5px}
+.m-opts span{border:1px solid var(--m-line); border-radius:6px; padding:3px 7px; font-size:11.5px}
+.m-opts span.ok{border-color:var(--m-accent); color:var(--m-accent); font-weight:700}
+.m-vid{display:flex; gap:8px; align-items:center}
+.m-thumb{width:42px; height:28px; border-radius:5px; background:var(--m-accent); flex:none; display:grid; place-items:center}
+.m-thumb::after{content:""; border-left:8px solid var(--m-bg); border-top:5px solid transparent; border-bottom:5px solid transparent; margin-left:2px}
+.m-vid span{font-size:11.5px; min-width:0}
+.m-books{display:flex; gap:6px}
+.m-books i{flex:1; height:44px; border-radius:4px; background:var(--m-soft); border-left:4px solid var(--m-accent)}
+.m-books i:nth-child(2){border-left-color:#e0913a}
+.m-books i:nth-child(3){border-left-color:#3aa57a}
+
+/* bölümler */
+section.block{padding-block:72px}
+.block-head{display:grid; gap:12px; margin-bottom:36px; max-width:44em}
+.block-head p{color:var(--muted); font-size:1.08rem}
+
+/* modüller */
+.modules{display:grid; grid-template-columns:repeat(4, 1fr); gap:14px}
+.mod{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px; display:grid; gap:6px; align-content:start}
+.mod b{font-family:var(--display); font-size:1.08rem}
+.mod span{color:var(--muted); font-size:.95rem; line-height:1.5}
+.modules-note{margin-top:18px; font-size:1.5rem}
+
+/* paketler */
+.plans{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; align-items:stretch}
+.plan{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px 24px; display:flex; flex-direction:column; gap:16px; position:relative}
+.plan.pick{border:2px solid var(--pen)}
+.plan .tag{position:absolute; top:-16px; left:22px; background:var(--paper); padding:0 8px; font-size:1.45rem; line-height:1}
+.plan h3{font-size:1.4rem}
+.plan .desc{color:var(--muted); font-size:.98rem}
+.price{display:grid; gap:2px}
+.price s{color:var(--muted); font-size:1rem; text-decoration-color:var(--pen); text-decoration-thickness:2px}
+.price b{font-family:var(--display); font-size:2.4rem; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; line-height:1.1}
+.price em{font-style:normal; font-size:.85rem; font-weight:700; color:var(--pen)}
+.plan ul{list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:.98rem}
+.plan li{display:grid; grid-template-columns:20px 1fr; gap:8px; align-items:start}
+.plan li svg{width:18px; height:18px; margin-top:4px; color:var(--pen)}
+.plan .btn{margin-top:auto; justify-content:center}
+
+.care{margin-top:18px; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px; display:flex; gap:20px; justify-content:space-between; align-items:center; flex-wrap:wrap}
+.care div{display:grid; gap:4px; min-width:0; flex:1 1 320px}
+.care p{color:var(--muted); font-size:.98rem}
+.care .price b{font-size:1.8rem}
+.care .price{text-align:right}
+.domain{margin-top:14px; color:var(--muted); font-size:.95rem}
+
+/* süreç */
+.steps{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; counter-reset:s}
+.steps li{display:grid; gap:8px; align-content:start; counter-increment:s; padding-top:14px; border-top:2px solid var(--ink)}
+.steps li::before{content:counter(s); font-family:var(--hand); color:var(--pen); font-size:2.4rem; line-height:1; font-weight:700}
+.steps p{color:var(--muted); font-size:.98rem}
+
+/* sss */
+.faq{display:grid; gap:10px; max-width:820px}
+.faq details{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:0 20px}
+.faq summary{cursor:pointer; list-style:none; font-weight:700; padding:16px 0; display:flex; justify-content:space-between; gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; font-family:var(--display); font-size:1.4rem; line-height:1; color:var(--pen)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding-bottom:18px; color:var(--muted)}
+
+/* kapanış */
+.final{padding-block:80px 64px}
+.final-card{background:var(--ink); color:var(--paper); border-radius:22px; padding:48px clamp(22px, 5vw, 56px); display:grid; gap:20px; justify-items:start}
+.final-card h2{color:var(--paper)}
+.final-card p{opacity:.85; max-width:36em}
+.handle{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.handle code{font-family:var(--display); font-weight:700; font-size:1.5rem; user-select:all}
+.final-card .btn{background:var(--paper); color:var(--ink); border-color:var(--paper)}
+.final-card .btn.ghost{background:transparent; color:var(--paper)}
+.copied{font-size:.9rem; opacity:.8; min-height:1.3em}
+footer{padding-block:0 40px; color:var(--muted); font-size:.9rem}
+
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr; gap:64px}
+  .modules{grid-template-columns:repeat(2, 1fr)}
+  .plans{grid-template-columns:1fr; gap:28px}
+  .steps{grid-template-columns:repeat(2, 1fr)}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .modules{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .shot{padding:0 18px 40px 0}
+  .phone{border-width:4px; border-radius:16px}
+  .care .price{text-align:left}
+  section.block{padding-block:52px}
+  .note{font-size:1.35rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .phone img,.rec::before{animation:none}
+  .btn{transition:none}
+  .btn:hover{transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Merve Çelik<small>Hocalar için web sitesi</small></div>
+    <a class="btn ghost" href="https://www.instagram.com/designermerv_/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      @designermerv_
+    </a>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="badge">Kampanya · İlk 10 hocaya indirimli fiyat</span>
+      <h1>Derslerinize, kitaplarınıza ve videolarınıza <span class="hl">tek bir adres.</span></h1>
+      <p class="lead">Öğrencileriniz sizi YouTube'da, Instagram'da buluyor. Ben de bu içerikleri sizin adınızı taşıyan bir sitede topluyorum. <strong>Herkese aynı şablonu vermiyorum:</strong> siteyi branşınıza, hazırladığınız sınavlara ve tarzınıza göre birlikte kuruyoruz.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://www.instagram.com/designermerv_/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.4 7.6L3 21l1.4-5.4A8.5 8.5 0 1 1 21 12z"/></svg>
+          Instagram'dan yazın
+        </a>
+        <a class="btn ghost" href="#paketler">Paketleri görün</a>
+      </div>
+    </div>
+
+    <div class="mock-zone">
+      <div class="note hand" aria-hidden="true">
+        örnek tasarım
+        <svg viewBox="0 0 46 34" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 4c10 2 22 10 28 24"/><path d="M24 24l8 5 2-9"/></svg>
+      </div>
+      <div class="shot">
+        <div class="browser">
+          <div class="m-bar"><i></i><i></i><i></i><div class="m-url">aysehoca.com</div></div>
+          <img src="ornek-masaustu.png" width="1340" height="1000" alt="Kurgusal Ayşe Hoca'yla Matematik sitesinin bilgisayar görünümü: başlık, günün sorusu çözümü, sınav etiketleri ve ders videoları">
+        </div>
+        <div class="phone">
+          <span class="rec">canlı önizleme</span>
+          <img src="ornek-telefon-uzun.png" width="780" height="5767" alt="Aynı sitenin telefon görünümü: kendi kendine aşağı kayarak videoları, kitapları ve Hocaya Sor formunu gösteriyor">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="eyebrow">Sitenizde neler olabilir</span>
+      <h2>İhtiyacınız olanı seçin, gerisini ben kurarım.</h2>
+      <p>Bunlar hocaların en çok istediği bölümler. Hepsi gerekmez. Hangilerinin sizin için anlamlı olduğuna birlikte karar veririz.</p>
+    </div>
+    <div class="modules">
+      <div class="mod"><b>Sınav sayfaları</b><span>TYT, AYT, LGS, KPSS, DGS, ALES, YDS… Her sınava ayrı sayfa ve içerik.</span></div>
+      <div class="mod"><b>Video arşivi</b><span>YouTube derslerinizi konuya ve sınava göre düzenli bir listede toplarız.</span></div>
+      <div class="mod"><b>Kitaplarınız</b><span>Kapak, kısa tanıtım ve satış sayfasına doğrudan bağlantı.</span></div>
+      <div class="mod"><b>Günün sorusu</b><span>Her gün birkaç soru, cevap ve çözüm. Öğrenciler siteye tekrar tekrar gelir.</span></div>
+      <div class="mod"><b>Duyurular</b><span>Kamp tarihleri, canlı yayınlar, yeni kitap haberleri.</span></div>
+      <div class="mod"><b>Sınav takvimi</b><span>ÖSYM ve MEB tarihleri, resmi sayfalara bağlantılarla.</span></div>
+      <div class="mod"><b>Hocaya Sor</b><span>Öğrencilerin soru gönderebileceği bir form.</span></div>
+      <div class="mod"><b>Hakkımda ve iletişim</b><span>Kim olduğunuz, nerede ders verdiğiniz, size nasıl ulaşılacağı.</span></div>
+    </div>
+    <p class="modules-note hand">Listede olmayan bir fikriniz mi var? Onu da yaparız.</p>
+  </div>
+</section>
+
+<section class="block" id="paketler">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="eyebrow">Paketler ve fiyatlar</span>
+      <h2>Kampanya fiyatları ilk 10 hocaya özel.</h2>
+      <p>Fiyatlar tek seferliktir. Ne istediğinizi konuştuktan sonra size en uygun paketi birlikte seçeriz.</p>
+    </div>
+
+    <div class="plans">
+      <article class="plan">
+        <h3>Tanıtım</h3>
+        <p class="desc">Kendini ve derslerini tanıtacak tek bir sayfa isteyen hocalar için.</p>
+        <div class="price"><s>7.500 ₺</s><b>5.000 ₺</b><em>Kampanya fiyatı</em></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Tek sayfa site</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Hakkımda ve verdiğiniz dersler</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>YouTube ve Instagram bağlantıları</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>WhatsApp ile iletişim butonu</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Telefonda düzgün görünür</li>
+        </ul>
+        <a class="btn ghost" href="https://www.instagram.com/designermerv_/" target="_blank" rel="noopener">Bu paketi sorun</a>
+      </article>
+
+      <article class="plan pick">
+        <span class="tag hand">çoğu hoca için yeterli</span>
+        <h3>Standart</h3>
+        <p class="desc">Videolarını, kitaplarını ve duyurularını tek yerde toplamak isteyen hocalar için.</p>
+        <div class="price"><s>15.000 ₺</s><b>10.000 ₺</b><em>Kampanya fiyatı</em></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Tanıtım paketindeki her şey</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>6 sayfaya kadar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Sınava göre düzenlenmiş video arşivi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Kitaplar ve satış bağlantıları</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Duyurular ve sınav takvimi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Hocaya Sor formu</li>
+        </ul>
+        <a class="btn" href="https://www.instagram.com/designermerv_/" target="_blank" rel="noopener">Bu paketi sorun</a>
+      </article>
+
+      <article class="plan">
+        <h3>Pro</h3>
+        <p class="desc">Öğrencilerin her gün uğradığı, kendi içeriğini kendisi güncelleyebileceği bir site isteyen hocalar için.</p>
+        <div class="price"><s>25.000 ₺</s><b>18.000 ₺</b><em>Kampanya fiyatı</em></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Standart paketteki her şey</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Günün sorusu ve konu testleri</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>İçeriği kendiniz ekleyebileceğiniz yönetim paneli</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Sayfa sınırı yok</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>Size özel bölümler ve detaylar</li>
+        </ul>
+        <a class="btn ghost" href="https://www.instagram.com/designermerv_/" target="_blank" rel="noopener">Bu paketi sorun</a>
+      </article>
+    </div>
+
+    <div class="care">
+      <div>
+        <h3>Bakım paketi</h3>
+        <p>Yeni video, kitap ya da duyuru eklemek istediğinizde bana gönderin, siteye ben ekleyeyim. Sitenin sorunsuz çalışmasını da takip ederim. İsteğe bağlıdır.</p>
+      </div>
+      <div class="price"><b>1.000 ₺ / ay</b><em>Kampanyada ilk ay ücretsiz</em></div>
+    </div>
+    <p class="domain">Alan adı (ör. aysehoca.com) sizin adınıza alınır. Yıllık alan adı ücreti fiyatlara dahil değildir.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="eyebrow">Nasıl ilerliyoruz</span>
+      <h2>İlk mesajdan yayına dört adım.</h2>
+    </div>
+    <ol class="steps">
+      <li><h3>Instagram'dan yazın</h3><p>@designermerv_ hesabına hangi dersi verdiğinizi ve sitede neler görmek istediğinizi kısaca yazın.</p></li>
+      <li><h3>Birlikte planlayalım</h3><p>Hangi sayfalar olacak, hangi içerikler girecek, site nasıl görünecek? Paketi ve fiyatı da burada netleştiririz.</p></li>
+      <li><h3>Taslağı görün</h3><p>İlk taslağı hazırlayıp size gösteririm. İki tur düzeltme fiyata dahildir.</p></li>
+      <li><h3>Yayına alalım</h3><p>Site kendi alan adınızla yayına girer. İsterseniz sonraki güncellemeleri bakım paketiyle ben yaparım.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="eyebrow">Sık sorulanlar</span>
+      <h2>Aklınıza takılabilecekler</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Hangi hocalar için?</summary>
+        <p>Her branştan hoca için. YKS, LGS, KPSS, DGS, ALES ya da YDS'ye hazırlayan, özel ders veren, kitap yazan veya YouTube'da ders anlatan herkes için uygun.</p>
+      </details>
+      <details>
+        <summary>Herkese aynı site mi yapılıyor?</summary>
+        <p>Hayır. Bölümleri, renkleri ve içeriği sizin derslerinize ve tarzınıza göre belirliyoruz. Yukarıdaki tasarım yalnızca bir örnek.</p>
+      </details>
+      <details>
+        <summary>Alan adı ve site kimin adına olacak?</summary>
+        <p>Sizin adınıza. Alan adı size ait olur, ileride başka biriyle çalışmak isterseniz sitenizi götürebilirsiniz. Alan adının yıllık ücreti fiyata dahil değildir.</p>
+      </details>
+      <details>
+        <summary>Ödeme nasıl yapılıyor?</summary>
+        <p>Ücretin yarısı işe başlarken, kalanı site yayına girmeden önce ödenir.</p>
+      </details>
+      <details>
+        <summary>Siteyi sonradan kendim güncelleyebilir miyim?</summary>
+        <p>Pro pakette içerik eklemek için bir yönetim paneli var. Diğer paketlerde değişiklikleri bakım paketiyle ben yaparım ya da tek seferlik değişiklikler için ayrıca anlaşırız.</p>
+      </details>
+      <details>
+        <summary>Kampanya ne kadar sürecek?</summary>
+        <p>Kampanya fiyatları ilk 10 hocayla sınırlı. Kontenjan dolunca normal fiyatlar geçerli olur.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="final-card">
+      <span class="eyebrow">İletişim</span>
+      <h2>Sitenizi konuşalım.</h2>
+      <p>Instagram'dan mesaj atın, ne istediğinizi konuşalım. Kampanya fiyatı için ilk 10 hocadan biri olmanız yeterli.</p>
+      <div class="handle">
+        <code id="ig-handle">@designermerv_</code>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="https://www.instagram.com/designermerv_/" target="_blank" rel="noopener">Instagram'da aç</a>
+        <button class="btn ghost" type="button" id="copy-btn">Kullanıcı adını kopyala</button>
+      </div>
+      <div class="copied" id="copy-msg" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Merve Çelik · Hocalar için web sitesi · Instagram: @designermerv_</div>
+</footer>
+
+<script>
+document.getElementById('copy-btn').addEventListener('click', function () {
+  var msg = document.getElementById('copy-msg');
+  var text = '@designermerv_';
+  function fallback() {
+    var r = document.createRange();
+    r.selectNodeContents(document.getElementById('ig-handle'));
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    msg.textContent = 'Kullanıcı adı seçildi. Kopyalamak için Ctrl+C\'ye basın.';
+  }
+  try {
+    navigator.clipboard.writeText(text).then(function () {
+      msg.textContent = 'Kopyalandı.';
+    }, fallback);
+  } catch (e) { fallback(); }
+});
+</script>
+</body>
+</html>
